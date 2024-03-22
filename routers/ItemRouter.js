@@ -3,10 +3,11 @@ import items from '../data/items.json';
 import _ from 'lodash';
         
 const router = express.Router();
+let itemsArray = items;
 
 
 router.get('/', (req, res) => {
-    res.json(items);
+    res.json(itemsArray);
 });
 
 router.get('/:id', (req, res) => {
@@ -20,6 +21,10 @@ router.get('/:id', (req, res) => {
     }
 );
 
+router.post('/', (req, res) => {
+   itemsArray.push(req.body);
+   res.status(200).send('OK');
+});
 
 module.exports = router;
 

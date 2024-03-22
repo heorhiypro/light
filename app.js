@@ -3,14 +3,18 @@ import items from './data/items.json';
 import _ from 'lodash';
 import ItemRouter from './routers/ItemRouter';
 import morgan from 'morgan';
-
+import bodyParser from 'body-parser';
 
 const PORT = 3000;
 const server = express();
 const BASE_ITEMS_URL = '/api/v1/items';
 
 server.use(morgan('tiny'));
+
+server.use(bodyParser.json());
+
 server.use(BASE_ITEMS_URL, ItemRouter);
+
 
 
 console.log("Hello JS");
